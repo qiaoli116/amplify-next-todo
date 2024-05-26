@@ -18,7 +18,7 @@ export default function App() {
 
     function listTodos() {
         client.models.Todo.observeQuery().subscribe({
-        next: (data) => setTodos([...data.items]),
+            next: (data) => setTodos([...data.items]),
         });
     }
 
@@ -27,13 +27,24 @@ export default function App() {
     }, []);
 
     function createTodo() {
-        client.models.Todo.create({
-            content: window.prompt("Todo content"),
-        });
+        client.models.Todo.create(
+            {
+                content: window.prompt("Todo content"),
+            },
+            {
+                authMode: 'userPool',
+            }
+        );
     }
 
     function deleteTodo(id: string) {
-        client.models.Todo.delete({ id });
+        client.models.Todo.delete(
+            { id }
+            ,
+            {
+                authMode: 'userPool',
+            }
+        );
     }
 
     return (
