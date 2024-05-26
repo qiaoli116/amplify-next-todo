@@ -24,7 +24,7 @@ export const data = defineData({
   authorizationModes: {
     defaultAuthorizationMode: "apiKey",
     apiKeyAuthorizationMode: {
-      expiresInDays: 30,
+      expiresInDays: 1,
     },
   },
 });
